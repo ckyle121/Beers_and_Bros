@@ -1,7 +1,7 @@
 // variables to reference to the dom 
 citySearched = document.querySelector("#city-search");
 searchBtn = document.querySelector("#search-btn");
-cityList = document.querySelector("#searched-city-list");
+cityList = document.querySelector("#previous-city-list");
 clearHistoryBtn = document.querySelector("#clear-history-btn");
 
 // function to handle city submit
@@ -9,19 +9,12 @@ var formSubmitHandler = function(event){
     // prevent page from refresh
     event.preventDefault();
 
-    // get vallue from input element
+    // get value from input element
     var cityName = citySearched.value.trim();
 
-    if (cityName){
-        //get breweries
-        brewerySearch(cityName);
-        // get tickets for sports games
-        ticketSearch(cityName);
-        saveSearch();
-    }
-    else {
-        // modal to tell them to enter city name 
-    }
+    brewerySearch(cityName);
+    ticketSearch(cityName);
+    saveSearch();
 };
 
 
@@ -31,7 +24,7 @@ var brewerySearch = function(cityName){
 
     fetch(breweryApi).then(function(response){
         response.json().then(function(data){
-
+            console.log(data);
         })
     })
 };

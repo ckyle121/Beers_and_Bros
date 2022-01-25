@@ -16,7 +16,7 @@ var formSubmitHandler = function(event){
         //get breweries
         brewrerySearch(cityName);
         // get tickets for sports games
-
+        ticketSearch(cityName);
     }
     else {
         // modal to tell them to enter city name 
@@ -38,4 +38,4 @@ var brewrerySearch = function(cityName){
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
     var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "classificationName=sports&apikey=" + ticketAPIkey;
-}
+};

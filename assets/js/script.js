@@ -14,9 +14,10 @@ var formSubmitHandler = function(event){
 
     if (cityName){
         //get breweries
-        brewrerySearch(cityName);
+        brewerySearch(cityName);
         // get tickets for sports games
         ticketSearch(cityName);
+        saveSearch();
     }
     else {
         // modal to tell them to enter city name 
@@ -25,7 +26,7 @@ var formSubmitHandler = function(event){
 
 
 // get brewery data by city 
-var brewrerySearch = function(cityName){
+var brewerySearch = function(cityName){
     var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName;
 
     fetch(breweryApi).then(function(response){
@@ -47,11 +48,14 @@ var ticketSearch = function(cityName){
 
 };
 
+// make an array for searched cities to put into local storage
+let cities = JSON.parse(localStorage.getItem("cities")) || [];
+
 // store searches to local storage 
 var saveSearch = function(){
 
     // get city name entered
-    var cityName = cityNameInput.value.trim();
+    var cityName = citySearched.value.trim();
 
     if (cities.indexOf(cityName) == -1){
         cities.push(cityName);
@@ -81,13 +85,10 @@ clearHistoryBtn.addEventListener("click", function(){
 // function to load city from past search
 var cityClickHanlder = function(event){
     var cityName = event.target.textContent;
-    getForecastWeather(cityName);
-    getDailyWeather(cityName);
+    ticketSearch(cityName);
+    brewerySearch(cityName);
 
 };
-
-// make an array for searched cities to put into local storage
-let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 // add event listener to submit button 
 searchBtn.addEventListener("click", formSubmitHandler);

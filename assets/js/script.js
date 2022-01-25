@@ -11,7 +11,6 @@ var formSubmitHandler = function(event){
 
     // get vallue from input element
     var cityName = citySearched.value.trim();
-
     if (cityName){
         //get breweries
         brewrerySearch(cityName);
@@ -26,6 +25,7 @@ var formSubmitHandler = function(event){
 
 // get brewery data by city 
 var brewrerySearch = function(cityName){
+    
     var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName;
 
     fetch(breweryApi).then(function(response){
@@ -39,3 +39,4 @@ var brewrerySearch = function(cityName){
 var ticketSearch = function(cityName){
     var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "classificationName=sports&apikey=" + ticketAPIkey;
 }
+

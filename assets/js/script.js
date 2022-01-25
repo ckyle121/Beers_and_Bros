@@ -2,7 +2,7 @@
 ticketAPIKey = "cBrE7HutiGu6X2ZRBbJxAenzvIT7Q498";
 
 // variables to reference to the dom 
-citySearched = document.querySelector("#city-search");
+cityInput = document.querySelector("#city-input");
 searchBtn = document.querySelector("#search-btn");
 cityList = document.querySelector("#previous-city-list");
 clearHistoryBtn = document.querySelector("#clear-history-btn");
@@ -13,7 +13,7 @@ var formSubmitHandler = function(event){
     event.preventDefault();
 
     // get value from input element
-    var cityName = citySearched.value.trim();
+    var cityName = cityInput.value.trim();
 
     brewerySearch(cityName);
     ticketSearch(cityName);
@@ -26,9 +26,7 @@ var brewerySearch = function(cityName){
     var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName;
 
     fetch(breweryApi).then(function(response){
-        response.json().then(function(data){
-            console.log(data);
-        })
+        response.json().then(console.log(response))
     })
 };
 
@@ -41,6 +39,13 @@ var ticketSearch = function(cityName){
             console.log(data);
         })
     })
+};
+
+// function to load city from past search
+var cityClickHanlder = function(event){
+    var cityName = event.target.textContent;
+    ticketSearch(cityName);
+    brewerySearch(cityName);
 
 };
 
@@ -51,7 +56,7 @@ let cities = JSON.parse(localStorage.getItem("cities")) || [];
 var saveSearch = function(){
 
     // get city name entered
-    var cityName = citySearched.value.trim();
+    var cityName = cityInput.value.trim();
 
     if (cities.indexOf(cityName) == -1){
         cities.push(cityName);
@@ -77,14 +82,6 @@ clearHistoryBtn.addEventListener("click", function(){
     localStorage.clear();
     cities = [];
 });
-
-// function to load city from past search
-var cityClickHanlder = function(event){
-    var cityName = event.target.textContent;
-    ticketSearch(cityName);
-    brewerySearch(cityName);
-
-};
 
 // add event listener to submit button 
 searchBtn.addEventListener("click", formSubmitHandler);

@@ -1,3 +1,6 @@
+// API key
+ticketAPIkey = "cBrE7HutiGu6X2ZRBbJxAenzvIT7Q498";
+
 // variables to reference to the dom 
 citySearched = document.querySelector("#city-search")
 
@@ -34,5 +37,5 @@ var brewrerySearch = function(cityName){
 
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
-    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?";
+    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "classificationName=sports&apikey=" + ticketAPIkey;
 }

@@ -67,6 +67,7 @@ var brewerySearch = function(cityName){
 
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
+
     var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&classificationName=sports&apikey=" + ticketAPIKey;
 
     fetch(ticketApi).then(function(response){

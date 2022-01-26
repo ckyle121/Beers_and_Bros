@@ -14,6 +14,7 @@ var formSubmitHandler = function(event){
     // prevent page from refresh
     event.preventDefault();
 
+
     // get value from input element
     var cityName = cityInput.value.trim();
 
@@ -149,3 +150,4 @@ clearHistoryBtn.addEventListener("click", function(){
 
 // add event listener to submit button 
 searchBtn.addEventListener("click", formSubmitHandler);
+

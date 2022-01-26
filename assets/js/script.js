@@ -6,6 +6,8 @@ cityInput = document.querySelector("#city-input");
 searchBtn = document.querySelector("#search-btn");
 cityList = document.querySelector("#previous-city-list");
 clearHistoryBtn = document.querySelector("#clear-history-btn");
+breweryList = document.querySelector("#brewery-list");
+ticketList = document.querySelector("#ticket-list");
 
 // function to handle city submit
 var formSubmitHandler = function(event){
@@ -24,9 +26,42 @@ var formSubmitHandler = function(event){
 // get brewery data by city 
 var brewerySearch = function(cityName){
     var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName;
-
+    
     fetch(breweryApi).then(function(response){
-        response.json().then(console.log(response))
+        response.json().then(function(data){
+            console.log(data);
+
+            // clear historical data 
+            breweryList.innerHTML = "";
+
+            // loop through brewery data
+            for (var i = 0; i < data.length; i++){
+                
+                // create div element for Brewery Card Div
+                var breweryEl = document.createElement("div");
+                breweryEl.classList.add("brewery-card");
+
+                // create h6 element for Brewery Name 
+                var breweryName = document.createElement("h6");
+                breweryName.textContent = data[i].name;
+
+                // create p element for Brewery Address
+                var breweryAddress = document.createElement("p");
+                breweryAddress.innerHTML = data[i].street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code;
+
+                // create p element for Brewery Website Url 
+                var breweryWebsite = document.createElement("p");
+                breweryWebsite.innerHTML = data[i].website_url
+
+                // append name, address, website url to brewery card div
+                breweryEl.append(breweryName);
+                breweryEl.append(breweryAddress);
+                breweryEl.append(breweryWebsite);
+
+                // append brewery card div to brewery list 
+                breweryList.append(breweryEl);
+            }
+        })
     })
 };
 
@@ -37,6 +72,34 @@ var ticketSearch = function(cityName){
     fetch(ticketApi).then(function(response){
         response.json().then(function(data){
             console.log(data);
+
+            // clear historical data 
+            ticketList.innerHTML = "";
+
+            // loop through ticket data 
+            for (var i = 0; i < data._embedded.events.length; i++){
+
+                // create div element for Ticket Card Div 
+                ticketEl = document.createElement("div");
+                ticketList.classList.add("ticket-card");
+
+                // create h6 element for Game Name 
+                var ticketName = document.createElement("h6");
+                ticketName.textContent = data._embedded.events[i].name;
+
+                // create p element for Game Time 
+                var gameTime = document.createElement("p");
+                gameTime.textContent = new Date(data._embedded.events[i].dates.start.dateTime);
+
+                // append game name, time, and tickets to Ticket Card Div
+                ticketEl.append(ticketName);
+                ticketEl.append(gameTime);
+
+                // append Ticket Card Div to ticket list 
+                ticketList.append(ticketEl);
+
+            }
+
         })
     })
 };

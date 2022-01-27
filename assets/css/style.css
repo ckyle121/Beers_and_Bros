@@ -1,5 +1,6 @@
 .jumbotron {
     text-align: center;
+    border-radius: 10px;
 }
 
 .search {
@@ -18,10 +19,15 @@
 
 #container {
     display: flex;
+    justify-content: space-around;
 }
 
 .btn {
     border-radius: 10px;
     background-color: #74664e;
     color: white;
+}
+
+h2 {
+    text-decoration: underline;
 }

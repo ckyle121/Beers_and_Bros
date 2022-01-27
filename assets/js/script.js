@@ -26,11 +26,10 @@ var formSubmitHandler = function(event){
 
 // get brewery data by city 
 var brewerySearch = function(cityName){
-    var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName;
+    var breweryApi = "https://api.openbrewerydb.org/breweries?by_city=" + cityName + "&per_page=20";
     
     fetch(breweryApi).then(function(response){
         response.json().then(function(data){
-            console.log(data);
 
             // clear historical data 
             breweryList.innerHTML = "";
@@ -56,16 +55,12 @@ var brewerySearch = function(cityName){
 
                 // create p element for Brewery Address
                 var breweryAddress = document.createElement("p");
-                var street = data[i].street 
-                console.log(street)
+                var street = data[i].street; 
                 if (street == null){
                     breweryAddress.innerHTML = data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
                 } else {
                     breweryAddress.innerHTML = street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
-                }
-                
-            
-                
+                };
 
                 // append name, address, website url to brewery card div
                 breweryEl.append(breweryName);
@@ -86,11 +81,10 @@ var timeConverter = function(input){
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
 
-    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&classificationName=sports&sort=date,asc&apikey=" + ticketAPIKey;
+    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&classificationName=sports&sort=date,asc&size=10&apikey=" + ticketAPIKey;
 
     fetch(ticketApi).then(function(response){
         response.json().then(function(data){
-            console.log(data);
 
             // clear historical data 
             ticketList.innerHTML = "";
@@ -100,7 +94,7 @@ var ticketSearch = function(cityName){
 
                 // create div element for Ticket Card Div 
                 ticketEl = document.createElement("div");
-                ticketList.classList.add("ticket-card");
+                ticketEl.classList.add("ticket-card");
 
                 // create h6 element for Game Name 
                 var ticketName = document.createElement("h6");

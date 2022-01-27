@@ -1,33 +1,55 @@
 .jumbotron {
     text-align: center;
-    border-radius: 10px;
+    color: #E6C72E;
+    background-color: #3A7399;
+    margin-bottom: 5px;
+}
+
+.title{
+    font-size: 10vw;
+}
+
+.search-container{
+    background-color: #B1D1E6;
+    margin-bottom: 10px;
 }
 
 .search {
     text-align: center;
     height: 11vh;
-    background-color: rgb(88, 75, 59);
-    border-radius: 10px;
+    padding: 10px;
 }
+
 .search h4 {
     font-size: 1.3rem;
 }
 
-#search-btn {
-    justify-content: center;
-}
-
-#container {
-    display: flex;
-    justify-content: space-around;
-}
-
 .btn {
     border-radius: 10px;
-    background-color: #74664e;
+    background-color:#3A7399;
     color: white;
 }
 
-h2 {
-    text-decoration: underline;
+.btn:hoover{
+    background-color: #E6C72E;
+    color: #3A7399;
 }
+
+h2 {
+    color: #3A7399;
+    background-color: #E6C72E;
+    padding: 5px;
+}
+
+.brewery-card, .ticket-card{
+    background-color: #B1D1E6;
+    color: #3A7399;
+    border-style: double;
+    border-color: #E6C72E;
+}
+
+
+a:link{
+    color: #3A7399;
+}
+

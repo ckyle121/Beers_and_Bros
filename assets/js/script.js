@@ -44,20 +44,23 @@ var brewerySearch = function(cityName){
 
                 // create h6 element for Brewery Name 
                 var breweryName = document.createElement("h6");
-                breweryName.textContent = data[i].name;
+
+                // create a element for h6 
+                var breweryWebsite = document.createElement("a");
+                breweryWebsite.setAttribute("href", data[i].website_url);
+                breweryWebsite.setAttribute("target", "_blank");
+                breweryWebsite.textContent = data[i].name;
+                
+                // append a element to h6
+                breweryName.append(breweryWebsite);
 
                 // create p element for Brewery Address
                 var breweryAddress = document.createElement("p");
-                breweryAddress.innerHTML = data[i].street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code;
-
-                // create p element for Brewery Website Url 
-                var breweryWebsite = document.createElement("link");
-                breweryWebsite.textContent = data[i].website_url;
+                breweryAddress.innerHTML = data[i].street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
 
                 // append name, address, website url to brewery card div
                 breweryEl.append(breweryName);
                 breweryEl.append(breweryAddress);
-                breweryEl.append(breweryWebsite);
 
                 // append brewery card div to brewery list 
                 breweryList.append(breweryEl);
@@ -91,16 +94,22 @@ var ticketSearch = function(cityName){
 
                 // create p element for Game Time 
                 var gameTime = document.createElement("p");
-                gameTime.textContent = new Date(data._embedded.events[i].dates.start.dateTime);
+                var gameDate = new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
+                var gameHour = (data._embedded.events[i].dates.start.localTime).moment()
+                gameTime.textContent = gameDate + " " + gameHour; 
 
-                // append game name, time, and tickets to Ticket Card Div
+                // create element for ticket starting price
+                startingPrice = document.createElement("p");
+                startingPrice.textContent = "Tickets start at: $" + data._embedded.events[i].priceRanges[0].min;
+
+                // append game name, time, tickets, starting price to Ticket Card Div
                 ticketEl.append(ticketName);
                 ticketEl.append(gameTime);
+                ticketEl.append(startingPrice);
 
                 // append Ticket Card Div to ticket list 
                 ticketList.append(ticketEl);
             }
-
         })
     })
 };

@@ -56,7 +56,16 @@ var brewerySearch = function(cityName){
 
                 // create p element for Brewery Address
                 var breweryAddress = document.createElement("p");
-                breweryAddress.innerHTML = data[i].street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
+                var street = data[i].street 
+                console.log(street)
+                if (street == null){
+                    breweryAddress.innerHTML = data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
+                } else {
+                    breweryAddress.innerHTML = street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code.substr(0,5);
+                }
+                
+            
+                
 
                 // append name, address, website url to brewery card div
                 breweryEl.append(breweryName);
@@ -68,6 +77,11 @@ var brewerySearch = function(cityName){
         })
     })
 };
+
+// function to account for military time
+var timeConverter = function(input){
+    return moment(input, "HH:mm:ss").format("h:mm A")
+}
 
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
@@ -94,9 +108,10 @@ var ticketSearch = function(cityName){
 
                 // create p element for Game Time 
                 var gameTime = document.createElement("p");
-                var gameDate = new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
-                var gameHour = (data._embedded.events[i].dates.start.localTime).moment()
-                gameTime.textContent = gameDate + " " + gameHour; 
+                var gameDay = document.createElement("p");
+                gameDay.textContent =  new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
+                gameTime.textContent = timeConverter(data._embedded.events[i].dates.start.localTime);
+                
 
                 // create element for ticket starting price
                 startingPrice = document.createElement("p");
@@ -105,6 +120,7 @@ var ticketSearch = function(cityName){
                 // append game name, time, tickets, starting price to Ticket Card Div
                 ticketEl.append(ticketName);
                 ticketEl.append(gameTime);
+                ticketEl.append(gameDay);
                 ticketEl.append(startingPrice);
 
                 // append Ticket Card Div to ticket list 

@@ -18,22 +18,23 @@
         <h4 class="text-light">Search for a City:</h4>
         <input type="text" autofocus="true" name="city" id="city-input">
         
-        <button id="search-btn" class="btn" type="submit">Search</button>
-        <button id="clear-history-btn" class="btn">Clear History</button>
+        <button id="search-btn" class=" btn" type="submit">Search</button>
+        <button id="clear-history-btn" class=" btn">Clear History</button>
     </form>
-    <div id="previous-city-list">
+    <div id="previous-city-list" class="text-center">
     </div>
     <div id="container" style="height: 400px;">
         <!--Breweries-->
-        <div class="h-80 col-6 text-center justify-content-between align-items-stretch flex-wrap" style="width: auto;">
+
+        <div class="col-6 text-center justify-content-between flex-wrap " style="width: auto;">
             <h2>Breweries</h2>
-            <div id="brewery-list" class="border"></div>
+            <div id="brewery-list" class="border border-dark"></div>
         </div>
 
         <!--Ticketmaster-->
-        <div class="h-80 col-6 text-center justify-content-between align-items-stretch flex-wrap" style="width: auto;">
+        <div class="col-6 text-center justify-content-between flex-wrap " style="width: auto;">
             <h2>Tickets</h2>
-            <div id="ticket-list" class="border"></div>
+            <div id="ticket-list" class="border border-dark"></div>
         </div>
     </div>
     <script src=./assets/js/script.js></script>

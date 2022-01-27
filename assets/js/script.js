@@ -153,7 +153,7 @@ var saveSearch = function(){
         var city = cities[i];
         var button = document.createElement("button");
         button.textContent = city;
-        button.classList.add("btn", "m-1.5");
+        button.classList.add("btn", "mb-2");
         cityList.appendChild(button);
 
         button.addEventListener("click", cityClickHanlder);

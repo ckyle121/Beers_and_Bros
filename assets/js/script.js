@@ -52,7 +52,7 @@ var brewerySearch = function(cityName){
 
                 // create p element for Brewery Website Url 
                 var breweryWebsite = document.createElement("link");
-                breweryWebsite.innerHTML = '<a href=' + data[i].website_url + '">Link</a>';
+                breweryWebsite.textContent = data[i].website_url;
 
                 // append name, address, website url to brewery card div
                 breweryEl.append(breweryName);

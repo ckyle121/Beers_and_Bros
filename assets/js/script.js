@@ -51,8 +51,8 @@ var brewerySearch = function(cityName){
                 breweryAddress.innerHTML = data[i].street + ", " + data[i].city + ", " + data[i].state + " " + data[i].postal_code;
 
                 // create p element for Brewery Website Url 
-                var breweryWebsite = document.createElement("p");
-                breweryWebsite.innerHTML = data[i].website_url
+                var breweryWebsite = document.createElement("link");
+                breweryWebsite.innerHTML = '<a href=' + data[i].website_url + '">Link</a>';
 
                 // append name, address, website url to brewery card div
                 breweryEl.append(breweryName);
@@ -69,7 +69,7 @@ var brewerySearch = function(cityName){
 // get sports ticket data by city 
 var ticketSearch = function(cityName){
 
-    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&classificationName=sports&apikey=" + ticketAPIKey;
+    var ticketApi = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&classificationName=sports&sort=date,asc&apikey=" + ticketAPIKey;
 
     fetch(ticketApi).then(function(response){
         response.json().then(function(data){
@@ -99,7 +99,6 @@ var ticketSearch = function(cityName){
 
                 // append Ticket Card Div to ticket list 
                 ticketList.append(ticketEl);
-
             }
 
         })

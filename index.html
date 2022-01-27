@@ -15,15 +15,17 @@
         <h1 class="title">Beers & Bros</h1>
     </header>
     <div class="container search-container">
-        <div class="row justify-content-center  search">
+        <div class="row justify-content-center search">
             <form class="col-12">
                 <h4 class="text-light">Search for a City:</h4>
                 <input type="text" autofocus="true" name="city" id="city-input">
                 <button id="search-btn" class="btn" type="submit">Search</button>
             </form>
         </div>
-        <div id="previous-city-list" class=" col-12 text-right">
-            <button id="clear-history-btn" class="btn">Clear History</button>
+        <p class="search-again">Search Again:</p>
+        <div id="previous-city-list" class="col-12 btn-group d-flex flex-wrap" role="group"></div>
+        <div class="text-center">
+            <button id="clear-history-btn" class="btn btn-sm text-right">Clear Previous Searches</button>
         </div>
     </div>
     <div id="container">

@@ -11,12 +11,11 @@
 
 .search-container{
     background-color: #B1D1E6;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .search {
     text-align: center;
-    height: 11vh;
     padding: 10px;
 }
 
@@ -24,6 +23,10 @@
     font-size: 1.3rem;
 }
 
+.search-again{
+    color: white;
+    text-align: center;
+}
 .btn {
     border-radius: 10px;
     background-color:#3A7399;
@@ -46,6 +49,7 @@ h2 {
     color: #3A7399;
     border-style: double;
     border-color: #E6C72E;
+    margin: 10px;
 }
 
 

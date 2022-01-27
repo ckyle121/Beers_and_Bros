@@ -42,7 +42,7 @@ var brewerySearch = function(cityName){
                 breweryEl.classList.add("brewery-card");
 
                 // create h6 element for Brewery Name 
-                var breweryName = document.createElement("h6");
+                var breweryName = document.createElement("h5");
 
                 // create a element for h6 
                 var breweryWebsite = document.createElement("a");
@@ -97,7 +97,7 @@ var ticketSearch = function(cityName){
                 ticketEl.classList.add("ticket-card");
 
                 // create h6 element for Game Name 
-                var ticketName = document.createElement("h6");
+                var ticketName = document.createElement("h5");
                 ticketName.textContent = data._embedded.events[i].name;
 
                 // create p element for Game Time 
@@ -164,6 +164,7 @@ var saveSearch = function(){
 clearHistoryBtn.addEventListener("click", function(){
     localStorage.clear();
     cities = [];
+    location.reload();
 });
 
 // add event listener to submit button 

@@ -11,30 +11,35 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header class="jumbotron"> 
-        <h1>Beers & Bros</h1>
+    <header class="jumbotron jumbotron-fluid"> 
+        <h1 class="title">Beers & Bros</h1>
     </header>
-    <form class="search" id="formEl">
-        <h4 class="text-light">Search for a City:</h4>
-        <input type="text" autofocus="true" name="city" id="city-input">
-        
-        <button id="search-btn" class=" btn" type="submit">Search</button>
-        <button id="clear-history-btn" class=" btn">Clear History</button>
-    </form>
-    <div id="previous-city-list" class="text-center">
-    </div>
-    <div id="container" style="height: 400px;">
-        <!--Breweries-->
-
-        <div class="col-6 text-center justify-content-between flex-wrap " style="width: auto;">
-            <h2>Breweries</h2>
-            <div id="brewery-list" class="border border-dark"></div>
+    <div class="container search-container">
+        <div class="row justify-content-center search">
+            <form class="col-12">
+                <h4 class="text-light">Search for a City:</h4>
+                <input type="text" autofocus="true" name="city" id="city-input">
+                <button id="search-btn" class="btn" type="submit">Search</button>
+            </form>
         </div>
-
-        <!--Ticketmaster-->
-        <div class="col-6 text-center justify-content-between flex-wrap " style="width: auto;">
-            <h2>Tickets</h2>
-            <div id="ticket-list" class="border border-dark"></div>
+        <p class="search-again">Search Again:</p>
+        <div id="previous-city-list" class="col-12 btn-group d-flex flex-wrap" role="group"></div>
+        <div class="text-center">
+            <button id="clear-history-btn" class="btn btn-sm text-right">Clear Previous Searches</button>
+        </div>
+    </div>
+    <div id="container">
+        <div class="row justify-content-around">
+            <!--Breweries-->
+            <div class="col-12 col-sm-6 text-center">
+                <h2>Breweries</h2>
+                <div id="brewery-list"></div>
+            </div>
+            <!--Ticketmaster-->
+            <div class="col-12 col-sm-6 text-center">
+                <h2>Tickets</h2>
+                <div id="ticket-list"></div>
+            </div>
         </div>
     </div>
     <script src=./assets/js/script.js></script>

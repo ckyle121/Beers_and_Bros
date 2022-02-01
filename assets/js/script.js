@@ -104,11 +104,6 @@ var ticketSearch = function(cityName){
                 var gameTime = document.createElement("p");
                 gameTime.textContent = timeConverter(data._embedded.events[i].dates.start.localTime) + " " + new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString(); 
                 
-
-                // create element for ticket starting price
-                startingPrice = document.createElement("p");
-                startingPrice.textContent = "Tickets start at: $" + data._embedded.events[i].priceRanges[0].min;
-
                 // create link for ticketmaster 
                 var ticketLink = document.createElement("a");
                 ticketLink.setAttribute("href", data._embedded.events[i].url);
@@ -119,7 +114,6 @@ var ticketSearch = function(cityName){
                 // append game name, time, tickets, starting price to Ticket Card Div
                 ticketEl.append(ticketName);
                 ticketEl.append(gameTime);
-                ticketEl.append(startingPrice);
                 ticketEl.append(ticketLink);
 
                 // append Ticket Card Div to ticket list 

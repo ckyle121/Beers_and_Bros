@@ -1,7 +1,7 @@
 # Beers & Bros 
 
 ## Purpose 
-This project creates a dashboard that uses Ticketmaster's API as well as Open Brewery DB's API to retreive information about different breweries and sporting events in cities searched by the user. The dashboard also displays previous answers stored inlocalStorage to display any cities that have been searched for prior and allows user to call them up quickly.
+This project creates a dashboard that uses Ticketmaster's API as well as Open Brewery DB's API to retreive information about different breweries and sporting events in cities searched by the user. The dashboard also displays previous answers stored in localStorage to display any cities that have been searched for prior and allows user to call them up quickly.
 
 Enter in your city of choice and select search to view the different breweries and tickets to sports events in the area. 
 

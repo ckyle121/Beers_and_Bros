@@ -85,7 +85,7 @@ var ticketSearch = function(cityName){
 
     fetch(ticketApi).then(function(response){
         response.json().then(function(data){
-
+            console.log(data);
             // clear historical data 
             ticketList.innerHTML = "";
 
@@ -102,20 +102,25 @@ var ticketSearch = function(cityName){
 
                 // create p element for Game Time 
                 var gameTime = document.createElement("p");
-                var gameDay = document.createElement("p");
-                gameDay.textContent =  new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
-                gameTime.textContent = timeConverter(data._embedded.events[i].dates.start.localTime);
+                gameTime.textContent = timeConverter(data._embedded.events[i].dates.start.localTime) + " " + new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString(); 
                 
 
                 // create element for ticket starting price
                 startingPrice = document.createElement("p");
                 startingPrice.textContent = "Tickets start at: $" + data._embedded.events[i].priceRanges[0].min;
 
+                // create link for ticketmaster 
+                var ticketLink = document.createElement("a");
+                ticketLink.setAttribute("href", data._embedded.events[i].url);
+                ticketLink.setAttribute("target", "_blank");
+                ticketLink.textContent = "Click Here to get tickets from Ticketmaster";
+                
+
                 // append game name, time, tickets, starting price to Ticket Card Div
                 ticketEl.append(ticketName);
                 ticketEl.append(gameTime);
-                ticketEl.append(gameDay);
                 ticketEl.append(startingPrice);
+                ticketEl.append(ticketLink);
 
                 // append Ticket Card Div to ticket list 
                 ticketList.append(ticketEl);

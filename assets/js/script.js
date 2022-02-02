@@ -102,7 +102,12 @@ var ticketSearch = function(cityName){
 
                 // create p element for Game Time 
                 var gameTime = document.createElement("p");
-                gameTime.textContent = timeConverter(data._embedded.events[i].dates.start.localTime) + " " + new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString(); 
+                localTime = data._embedded.events[i].dates.start.localTime;
+                if (localTime == null){
+                    gameTime.textContent = new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
+                } else{
+                    gameTime.textContent = timeConverter(localTime) + " " + new Date(data._embedded.events[i].dates.start.localDate).toLocaleDateString();
+                };
                 
                 // create link for ticketmaster 
                 var ticketLink = document.createElement("a");
